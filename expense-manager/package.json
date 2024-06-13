@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "gh-prod-deploy": "ng build --output-path docs --base-href /expense-manager/"
+    "gh-prod-deploy": "ng build --output-path ./../docs --base-href /expense-manager/"
   },
   "private": true,
   "dependencies": {
