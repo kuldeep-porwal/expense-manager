@@ -1,16 +1,28 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthModule } from './core/auth/auth.module';
+import { CoreModule } from './core/core.module';
+import { AuthModule } from './features/auth/auth.module';
 import { SharedModule } from './shared/shared.module';
-import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [AppComponent],
-    imports: [BrowserModule, AppRoutingModule, AuthModule, SharedModule, BrowserAnimationsModule],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        AuthModule,
+        SharedModule,
+        BrowserAnimationsModule,
+        CoreModule,
+        StoreModule.forRoot({}),
+        EffectsModule.forRoot([])
+    ],
     providers: [],
     bootstrap: [AppComponent]
 })

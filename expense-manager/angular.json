@@ -136,16 +136,16 @@
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "configurations": {
                         "prod": {
-                            "browserTarget": "expense-manager:build:prod"
+                            "buildTarget": "expense-manager:build:prod"
                         },
                         "stage": {
-                            "browserTarget": "expense-manager:build:stage"
+                            "buildTarget": "expense-manager:build:stage"
                         },
                         "dev": {
-                            "browserTarget": "expense-manager:build:dev"
+                            "buildTarget": "expense-manager:build:dev"
                         },
                         "development": {
-                            "browserTarget": "expense-manager:build:development"
+                            "buildTarget": "expense-manager:build:development"
                         }
                     },
                     "defaultConfiguration": "development"
@@ -153,7 +153,7 @@
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "expense-manager:build"
+                        "buildTarget": "expense-manager:build"
                     }
                 },
                 "test": {
