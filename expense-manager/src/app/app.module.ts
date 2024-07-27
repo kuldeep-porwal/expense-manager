@@ -8,7 +8,6 @@ import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { AuthModule } from './features/auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
@@ -16,7 +15,6 @@ import { SharedModule } from './shared/shared.module';
     imports: [
         BrowserModule,
         AppRoutingModule,
-        AuthModule,
         SharedModule,
         BrowserAnimationsModule,
         CoreModule,
