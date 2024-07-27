@@ -1,0 +1,6 @@
+.angular/
+dockerfile
+Dockerfile
+**/dockerfile
+**/Dockerfile
+docker-compose.*

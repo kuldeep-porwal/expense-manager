@@ -1,0 +1,45 @@
+.container {
+    margin: auto;
+    background-color: #ededed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    .login-form {
+        width: 30%;
+        background-color: green($color: #000000);
+    }
+}
+
+.mat-form-field {
+    display: block;
+}
+
+.login-header {
+    text-align: center;
+}
+.login-action {
+    text-align: center;
+
+    .submit-btn {
+        width: 100%;
+        color: white;
+        background-color: blue;
+    }
+}
+
+.login-content {
+    margin-bottom: 1rem;
+    .remember-me {
+        margin-left: 0.1rem;
+    }
+}
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    .container {
+        .login-form {
+            width: 80%;
+        }
+    }
+}

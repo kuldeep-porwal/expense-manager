@@ -1,0 +1,40 @@
+<div class="container">
+    <mat-card appearance="outlined" class="login-form">
+        <div class="login-header">
+            <p>Login Form</p>
+        </div>
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+            <div class="login-content">
+                <div class="username">
+                    <mat-form-field appearance="outline">
+                        <mat-label>UserName</mat-label>
+                        <input matInput placeholder="Enter UserName here..." name="userName" type="text" required email ngModel />
+                        <mat-icon matSuffix>person</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="password">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input
+                            matInput
+                            placeholder="Enter password here..."
+                            name="password"
+                            [type]="showPassword ? 'text' : 'password'"
+                            required
+                            ngModel
+                        />
+                        <app-show-password matSuffix (showPassword)="onShowPasswordClick($event)"> </app-show-password>
+                    </mat-form-field>
+                </div>
+                <div class="remember-me">
+                    <mat-checkbox type="checkbox" [(ngModel)]="rememberMe" [ngModelOptions]="{ standalone: true }">
+                        Remember Me?
+                    </mat-checkbox>
+                </div>
+            </div>
+            <div class="login-action">
+                <button class="submit-btn" mat-flat-button success type="submit">Login</button>
+            </div>
+        </form>
+    </mat-card>
+</div>

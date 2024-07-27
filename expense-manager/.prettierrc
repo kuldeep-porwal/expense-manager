@@ -1,0 +1,12 @@
+{
+  "arrowParens": "avoid",
+  "importOrder": ["^@angular/(.*)$", "<THIRD_PARTY_MODULES>", "^[./]"],
+  "importOrderCaseInsensitive": true,
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderParserPlugins": ["typescript", "classProperties", "decorators-legacy"],
+  "printWidth": 140,
+  "singleQuote": true,
+  "tabWidth": 4,
+  "trailingComma": "none"
+}
