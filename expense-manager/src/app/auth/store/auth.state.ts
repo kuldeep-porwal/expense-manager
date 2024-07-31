@@ -1,8 +1,9 @@
+import { UserInfo } from '../models';
+
 export interface AuthState {
-    userName?: string;
-    isLoggedIn: boolean;
+    userInfo?: UserInfo;
 }
 
 export const _initialState: AuthState = {
-    isLoggedIn: false
+    userInfo: undefined
 };

@@ -1,5 +1,6 @@
+<app-spinner id="loginFormSpinner"></app-spinner>
 <div class="container">
-    <mat-card appearance="outlined" class="login-form">
+    <mat-card appearance="outlined" class="login-form" appLoader="loginFormSpinner" [appLoaderState]="isLoading">
         <div class="login-header">
             <p>Login Form</p>
         </div>
@@ -22,6 +23,7 @@
                             [type]="showPassword ? 'text' : 'password'"
                             required
                             ngModel
+                            autocomplete="off"
                         />
                         <app-show-password matSuffix (showPassword)="onShowPasswordClick($event)"> </app-show-password>
                     </mat-form-field>

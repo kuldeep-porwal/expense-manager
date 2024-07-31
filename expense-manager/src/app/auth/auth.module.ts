@@ -7,14 +7,14 @@ import { StoreModule } from '@ngrx/store';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 import { AuthRoutingModule } from './auth-routing.module';
-import { LoginComponent } from './components/login/login.component';
-import { SignupComponent } from './components/signup/signup.component';
+import * as fromCoreComponents from './components/index';
+import * as fromContainers from './containers/index';
 import { AUTH_FEATURE_NAME } from './store/auth.actions';
 import { AuthEffects } from './store/auth.effects';
 import { authReducer } from './store/auth.reducers';
 
 @NgModule({
-    declarations: [LoginComponent, SignupComponent],
+    declarations: [...fromContainers.components, ...fromCoreComponents.components],
     imports: [
         CommonModule,
         AuthRoutingModule,

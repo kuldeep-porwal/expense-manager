@@ -1,23 +1,41 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AppComponent } from './app.component';
-import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import * as fromCoreComponents from './core/components';
+import { authenticationGuard } from './core/guards';
+import { adminGuard } from './core/guards/admin.guard';
 
 const routes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'auth'
+        redirectTo: 'dashboard'
     },
-    { path: 'home', component: AppComponent },
     {
         path: 'auth',
         loadChildren: () => import('./auth/auth-routing.module').then(m => m.AuthRoutingModule)
     },
     {
+        path: 'expense',
+        canMatch: [authenticationGuard, adminGuard],
+        loadChildren: () => import('./features/expense/expense.module').then(m => m.ExpenseModule)
+    },
+    {
+        path: 'dashboard',
+        canActivate: [authenticationGuard],
+        loadChildren: () => import('./features/dashboard/dashboard.module').then(m => m.DashboardModule)
+    },
+    {
+        path: 'access-denied',
+        component: fromCoreComponents.AccessDeniedComponent
+    },
+    {
+        path: 'not-found',
+        component: fromCoreComponents.NotFoundComponent
+    },
+    {
         path: '**',
-        component: NotFoundComponent
+        redirectTo: 'not-found'
     }
 ];
 

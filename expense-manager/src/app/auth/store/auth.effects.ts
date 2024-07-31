@@ -25,9 +25,9 @@ export class AuthEffects {
                 this._authService.login(loginRequest).pipe(
                     switchMap((loginResponse: LoginResponse) => {
                         if (isOk(loginResponse.code)) {
-                            return of(authStateActions.loginSuccess({ loginResponse: loginResponse }));
+                            return [authStateActions.loginSuccess({ loginResponse: loginResponse })];
                         }
-                        return of(authStateActions.loginFail({ loginErrorResponse: loginResponse }));
+                        return [authStateActions.loginFail({ loginErrorResponse: loginResponse })];
                     }),
                     catchError((error: HttpErrorResponse) =>
                         of(

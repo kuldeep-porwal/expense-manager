@@ -1,34 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-
-import { authStateActions } from '../../store/auth.actions';
-import { authStateSelector } from '../../store/auth.selectors';
-import { AuthState } from '../../store/auth.state';
+import LoginDetail from '../../models/login-detail';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+    @Output() login: EventEmitter<LoginDetail> = new EventEmitter<LoginDetail>();
+
     rememberMe: boolean = false;
     showPassword: boolean = false;
-    loggedIn$: Observable<boolean>;
-    constructor(private _authStore: Store<AuthState>) {
-        this.loggedIn$ = this._authStore.pipe(select(authStateSelector.isLoggedIn));
-    }
-    ngOnInit(): void {
-        this.loggedIn$.subscribe(x => {
-            console.log(x);
-        });
-    }
-
+    isLoading: boolean = false;
     onSubmit(loginForm: NgForm) {
-        console.log(loginForm.form.value, this.rememberMe);
-        this._authStore.dispatch(authStateActions.login({ loginRequest: loginForm.value }));
+        this.isLoading = true;
+        this.login.emit({ ...loginForm.value, rememberMe: this.rememberMe }); // Simulate an HTTP request
+        setTimeout(() => {
+            // After login
+            this.isLoading = false;
+        }, 3000);
     }
 
     onShowPasswordClick(showPasswordEvent: boolean) {

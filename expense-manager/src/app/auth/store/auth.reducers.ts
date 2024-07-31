@@ -8,12 +8,10 @@ const _authReducer = createReducer(
     on(authStateActions.login, state => ({ ...state })),
     on(authStateActions.loginSuccess, (state, { loginResponse }) => ({
         ...state,
-        isLoggedIn: true,
-        userName: loginResponse.userName
+        userInfo: Object.create({ userName: loginResponse.userName, tokenInfo: loginResponse.tokenInfo })
     })),
     on(authStateActions.loginFail, (state, { loginErrorResponse }) => ({
-        ...state,
-        isLoggedIn: false
+        ...state
     }))
 );
 
